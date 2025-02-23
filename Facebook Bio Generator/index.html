@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Bio Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button, textarea {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: #1877f2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #1359b1;
+        }
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Facebook Bio Generator</h2>
+        <input type="text" id="name" placeholder="Masukkan Nama" /><br>
+        <input type="text" id="hobby" placeholder="Masukkan Hobi" /><br>
+        <select id="style">
+            <option value="cool">Keren</option>
+            <option value="funny">Lucu</option>
+            <option value="motivational">Motivasi</option>
+        </select><br>
+        <button onclick="generateBio()">Buat Bio</button>
+        <textarea id="bio" readonly></textarea>
+        <button onclick="copyBio()">Salin Bio</button>
+    </div>
+
+    <script>
+        function generateBio() {
+            let name = document.getElementById("name").value;
+            let hobby = document.getElementById("hobby").value;
+            let style = document.getElementById("style").value;
+            let bio = "";
+
+            if (style === "cool") {
+                bio = `${name} | Hidup tanpa batas 🚀 | ${hobby} is my passion!`;
+            } else if (style === "funny") {
+                bio = `${name} | Ahli rebahan & ${hobby} 🤣`;
+            } else if (style === "motivational") {
+                bio = `${name} | Tetap semangat, sukses menanti! 💪 | ${hobby} is life!`;
+            }
+
+            document.getElementById("bio").value = bio;
+        }
+
+        function copyBio() {
+            let bioField = document.getElementById("bio");
+            bioField.select();
+            document.execCommand("copy");
+            alert("Bio berhasil disalin!");
+        }
+    </script>
+</body>
+</html>
