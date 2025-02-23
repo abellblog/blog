@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deskripsi Reels Facebook Generator</title>
+</head>
+<body>
+    <h2>Deskripsi Reels Facebook Generator</h2>
+    <textarea id="keywords" placeholder="Masukkan kata kunci, pisahkan dengan koma..."></textarea>
+    <button id="generateBtn">Buat Deskripsi</button>
+    <p id="hasil"></p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("generateBtn").addEventListener("click", generateDescription);
+        });
+
+        function generateDescription() {
+            let keywords = document.getElementById("keywords").value;
+            if (!keywords.trim()) {
+                alert("Masukkan setidaknya satu kata kunci!");
+                return;
+            }
+            let keywordArray = keywords.split(",").map(k => k.trim());
+            let templates = [
+                `Nikmati momen terbaik dengan ${keywordArray[0]}! ✨ #viral #reels`,
+                `Siapa yang suka ${keywordArray[0]}? Jangan lupa like & share! ❤️ #trending`,
+                `Reels spesial untuk kamu yang suka ${keywordArray[0]} dan ${keywordArray[1] || keywordArray[0]}! 🔥 #fyp`,
+                `${keywordArray[0]} adalah segalanya! Setuju? 🤩 #explore #influencer`
+            ];
+            let randomDescription = templates[Math.floor(Math.random() * templates.length)];
+            document.getElementById("hasil").innerText = randomDescription;
+        }
+    </script>
+</body>
+</html>
